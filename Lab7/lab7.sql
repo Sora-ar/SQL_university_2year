@@ -17,7 +17,7 @@ CREATE TABLE `comments` (
   `date` timestamp NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`),
   KEY `news_id` (`news_id`),
-  CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`news_id`) REFERENCES `news` (`news_id`)
+  CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`news_id`) REFERENCES `news` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `news` (
@@ -26,9 +26,9 @@ CREATE TABLE `news` (
   `title` varchar(255) NOT NULL,
   `content` text NOT NULL,
   `publication_date` timestamp NOT NULL DEFAULT current_timestamp(),
-  PRIMARY KEY (`newsID`),
+  PRIMARY KEY (`id`),
   KEY `id` (`category_id`),
-  CONSTRAINT `news_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `categories` (`category_id`)
+  CONSTRAINT `news_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `ratings` (
@@ -36,7 +36,7 @@ CREATE TABLE `ratings` (
   `news_id` int(11) DEFAULT NULL,
   `ip_address` varchar(15) NOT NULL,
   `rating_value` int(11) DEFAULT NULL CHECK (`rating_value` between 1 and 5),
-  PRIMARY KEY (`ratingID`),
+  PRIMARY KEY (`id`),
   UNIQUE KEY `news_id` (`news_id`,`ip_address`),
-  CONSTRAINT `ratings_ibfk_1` FOREIGN KEY (`news_id`) REFERENCES `news` (`news_id`)
+  CONSTRAINT `ratings_ibfk_1` FOREIGN KEY (`news_id`) REFERENCES `news` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
