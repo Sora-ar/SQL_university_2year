@@ -16,7 +16,7 @@ CREATE TABLE `comments` (
   `text` text NOT NULL,
   `date` timestamp NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`),
-  KEY `newsID` (`news_id`),
+  KEY `news_id` (`news_id`),
   CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`news_id`) REFERENCES `news` (`news_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -27,7 +27,7 @@ CREATE TABLE `news` (
   `content` text NOT NULL,
   `publication_date` timestamp NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`newsID`),
-  KEY `categoryID` (`category_id`),
+  KEY `id` (`category_id`),
   CONSTRAINT `news_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `categories` (`category_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
